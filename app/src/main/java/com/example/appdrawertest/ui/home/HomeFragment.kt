@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.appdrawertest.core.Backend
+import com.example.appdrawertest.core.service.Repositories
 import com.example.appdrawertest.core.request.CheckUpdateRequest
-import com.example.appdrawertest.core.service.Repository
 import com.example.appdrawertest.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -43,14 +42,10 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val repository= Repository()
-        val backend= Backend
-
 
         GlobalScope.launch(Dispatchers.Main) {
 
-        backend.getCheckAppVersion(request = CheckUpdateRequest("https://monitorps.sardegnasalute.it/monitorps/app/versionCheck?versionCode=1.1"))
-        //    repository.checkUpdate("https://monitorps.sardegnasalute.it/monitorps/app/versionCheck?versionCode=1.1")
+            Repositories.getCheckAppVersion(request = CheckUpdateRequest("https://monitorps.sardegnasalute.it/monitorps/app/versionCheck?versionCode=1.1"))
         }
     }
 

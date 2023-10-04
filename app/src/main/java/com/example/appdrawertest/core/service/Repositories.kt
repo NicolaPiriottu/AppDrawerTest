@@ -1,4 +1,4 @@
-package com.example.appdrawertest.core
+package com.example.appdrawertest.core.service
 
 import com.example.appdrawertest.core.Router.apiService
 import com.example.appdrawertest.core.request.CheckUpdateRequest
@@ -8,7 +8,7 @@ import org.simpleframework.xml.Serializer
 import org.simpleframework.xml.core.Persister
 import timber.log.Timber
 
-object Backend {
+object Repositories {
 
     suspend fun getCheckAppVersion(request: CheckUpdateRequest): Result<ResponseBody> {
         return runCatching {
